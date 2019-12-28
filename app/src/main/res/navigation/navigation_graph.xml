@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.arkapp.gyanvatika.ui.splashscreen.SplashFragment"
+        android:label="SplashFragment">
+        <action
+            android:id="@+id/openHomeScreen"
+            app:destination="@id/calendarView"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/calendarView"
+        android:name="com.arkapp.gyanvatika.ui.home.calendarView.CalendarViewFragment"
+        android:label="Calendar"/>
+
+    <fragment
+        android:id="@+id/newBooking"
+        android:name="com.arkapp.gyanvatika.ui.home.newBooking.NewBookingFragment"
+        android:label="New Booking" />
+</navigation>

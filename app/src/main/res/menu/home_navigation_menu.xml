@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/calendarView"
+        android:title="@string/calendar"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        />
+
+    <item
+        android:id="@+id/newBooking"
+        android:title="@string/add_booking"
+        android:icon="@android:drawable/ic_menu_agenda"
+        />
+</menu>

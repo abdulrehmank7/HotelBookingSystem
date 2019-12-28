@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Gyan Vatika</string>
+    <string name="calendar">Calendar</string>
+    <string name="add_booking">Add Booking</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="customer_phone_no">Customer Phone no.</string>
+    <string name="booking_amount">Booking Amount</string>
+    <string name="to">TO</string>
+</resources>

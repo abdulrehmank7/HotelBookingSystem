@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "670753588377",
+    "firebase_url": "https://gyanvatikabookings.firebaseio.com",
+    "project_id": "gyanvatikabookings",
+    "storage_bucket": "gyanvatikabookings.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670753588377:android:d72cb309d68baaa7ea2408",
+        "android_client_info": {
+          "package_name": "com.arkapp.gyanvatika"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670753588377-htuspe5e20r7ktcgcb449mev64ge2e3f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arkapp.gyanvatika",
+            "certificate_hash": "ff9934e9e3cbdfeb270edefa23380bc238241668"
+          }
+        },
+        {
+          "client_id": "670753588377-bue97hgvioagvjud064tf8varmmlkp1f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBfKUWez96pu4giU9I1_Ja_m_YREREcZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670753588377-bue97hgvioagvjud064tf8varmmlkp1f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.arkapp.gyanvatika.ui.splashscreen.SplashViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.splash.SplashActivity">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="158dp"
+            android:layout_height="158dp"
+            android:layout_marginTop="32dp"
+            app:cardBackgroundColor="@android:color/background_dark"
+            app:cardCornerRadius="99dp"
+            app:cardElevation="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="198dp"
+                android:layout_height="198dp"
+                android:layout_gravity="center"
+                android:paddingTop="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_logo" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
