@@ -6,4 +6,20 @@
     <string name="customer_phone_no">Customer Phone no.</string>
     <string name="booking_amount">Booking Amount</string>
     <string name="to">TO</string>
+    <string name="other_info">Enter other info.</string>
+    <string name="total_days">Total Booking Days:</string>
+    <string name="time_check_error">End date cannot be less than start date!\nPlease choose correct date.</string>
+    <string name="days">days</string>
+    <string name="customer_name_error">Enter customer name</string>
+    <string name="event_added_msg">Successfully added the event!</string>
+    <string name="confirm_detail">Confirm details!</string>
+
+    <string name="sun">SUN</string>
+    <string name="mon">MON</string>
+    <string name="tue">TUE</string>
+    <string name="wed">WED</string>
+    <string name="thu">THU</string>
+    <string name="fri">FRI</string>
+    <string name="sat">SAT</string>
+
 </resources>

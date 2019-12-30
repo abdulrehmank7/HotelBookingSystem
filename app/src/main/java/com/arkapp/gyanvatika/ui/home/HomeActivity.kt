@@ -16,15 +16,12 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val navController = findNavController(R.id.mainNavigationFragment)
-        setupActionBarWithNavController(navController)
         bottomNavigation.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.splashFragment) {
-                supportActionBar!!.hide()
                 bottomNavigation.visibility = View.GONE
             } else {
-                supportActionBar!!.show()
                 bottomNavigation.visibility = View.VISIBLE
             }
         }
