@@ -7,4 +7,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextAppearance.LightFont" parent="android:TextAppearance">
+        <item name="fontPath">fonts/Montserrat-Light.ttf</item>
+    </style>
+
+    <style name="TextAppearance.MediumFont" parent="android:TextAppearance">
+        <item name="fontPath">fonts/Montserrat-Medium.ttf</item>
+    </style>
+
+    <style name="TextAppearance.BoldFont" parent="android:TextAppearance">
+        <item name="fontPath">fonts/Montserrat-Bold.ttf</item>
+    </style>
 </resources>

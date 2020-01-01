@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 //kotlin kapt and navigation safeargs plugin
 apply plugin: 'androidx.navigation.safeargs'
+
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -70,6 +71,10 @@ dependencies {
     //Navigation component
     implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0'
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
+
+    //Custom fonts
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
 
 }
 apply plugin: 'com.google.gms.google-services'

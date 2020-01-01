@@ -1,10 +1,9 @@
-package com.arkapp.gyanvatika.ui.home.calendarView
+package com.arkapp.gyanvatika.ui.calendarView
 
 import com.arkapp.gyanvatika.data.firestore.responses.Event
 import com.arkapp.gyanvatika.utils.formatDate
 import com.arkapp.gyanvatika.utils.getCalendarForMidNight
 import com.arkapp.gyanvatika.utils.pojo.GeneratedEvents
-import com.arkapp.gyanvatika.utils.printLog
 import com.kizitonwose.calendarview.model.CalendarDay
 import java.util.*
 import kotlin.collections.ArrayList
@@ -13,6 +12,7 @@ const val BUFFER_DAY = 7
 const val START_EVENT_DAY = 1
 const val END_EVENT_DAY = 2
 const val BETWEEN_EVENT_DAY = 3
+const val ONE_EVENT_DAY = 4
 
 fun generateMonthEventList(eventList: List<Event>): ArrayList<GeneratedEvents> {
     val generatedList = ArrayList<GeneratedEvents>()
@@ -22,11 +22,14 @@ fun generateMonthEventList(eventList: List<Event>): ArrayList<GeneratedEvents> {
             event.endDateTimestamp.toLong())
 
         allDates.forEachIndexed { index, date ->
-            val type = when (index) {
-                0 -> START_EVENT_DAY
-                allDates.size - 1 -> END_EVENT_DAY
-                else -> BETWEEN_EVENT_DAY
-            }
+            val type=
+                if (allDates.size == 1)
+                    ONE_EVENT_DAY
+                else when (index) {
+                    0 -> START_EVENT_DAY
+                    allDates.size - 1 -> END_EVENT_DAY
+                    else -> BETWEEN_EVENT_DAY
+                }
             generatedList.add(GeneratedEvents(event, formatDate(date), type))
         }
 

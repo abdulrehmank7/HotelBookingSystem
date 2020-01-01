@@ -22,4 +22,25 @@
     <string name="fri">FRI</string>
     <string name="sat">SAT</string>
 
+    <string name="user_name">User Name</string>
+    <string name="phone_no">Phone No.</string>
+    <string name="other_info_title">Other Info</string>
+    <string name="booking_start_date">Booking Start Date</string>
+    <string name="booking_end_date">Booking End Date</string>
+
+    <string name="Rs">\u20B9</string>
+    <string name="unavailable">unavailable!</string>
+    <string name="booking_details">Booking Details</string>
+    <string name="total_booked_days">Total Booked Days</string>
+    <string name="delete_booking">Delete Booking!</string>
+    <string name="delete_booking_msg">Do you want to delete the booking details?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="successfully_deleted">Successfully deleted the Booking.</string>
+    <string name="deleting_wait_msg">Deleting booking please wait...</string>
+    <string name="update_booking">Update Booking</string>
+    <string name="updating_detail">Updating booking details...</string>
+    <string name="successfully_updated">Successfully updated the details.</string>
+    <string name="no_booking_found">No Booking Found!</string>
+
 </resources>

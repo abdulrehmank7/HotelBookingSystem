@@ -1,4 +1,4 @@
-package com.arkapp.gyanvatika.ui.home.calendarView
+package com.arkapp.gyanvatika.ui.calendarView
 
 import com.arkapp.gyanvatika.utils.pojo.GeneratedEvents
 

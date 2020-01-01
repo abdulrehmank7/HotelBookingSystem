@@ -6,13 +6,16 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.Group
 import com.arkapp.gyanvatika.R
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import io.github.inflationx.calligraphy3.CalligraphyConfig
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor
+import io.github.inflationx.viewpump.ViewPump
 import java.util.*
+
 
 fun Activity.openActivity(toActivityClass: Class<*>, finishPreviousScreen: Boolean) {
     val intent = Intent(this, toActivityClass)
@@ -55,15 +58,27 @@ fun Context.showMessageDialog(title: String, message: String, buttonMsg: String)
     builder.show()
 }
 
-fun Activity.showSnack(msg: String?) {
+fun View.showSnack(msg: String?) {
     try {
         Snackbar.make(
-            window.decorView.findViewById(R.id.content),
+            this,
             msg!!,
             Snackbar.LENGTH_SHORT).show()
     } catch (e: Exception) {
         e.printStackTrace()
     }
+}
+
+fun View.showIndefiniteSnack(msg: String?): Snackbar? {
+    try {
+        return Snackbar.make(
+            this,
+            msg!!,
+            Snackbar.LENGTH_INDEFINITE).also { it.show() }
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+    return null
 }
 
 fun String?.availableText(): String {
@@ -80,4 +95,27 @@ fun Context.showDatePicker(listener: DatePickerDialog.OnDateSetListener) {
         getCalendarForMidNight()[Calendar.MONTH],
         getCalendarForMidNight()[Calendar.DAY_OF_MONTH])
         .show()
+}
+
+fun Context.showDialog(
+    title: String,
+    message: String,
+    negativeMsg: String): MaterialAlertDialogBuilder {
+
+    val dialog = MaterialAlertDialogBuilder(this)
+    dialog.setTitle(title)
+        .setMessage(message)
+        .setNegativeButton(negativeMsg) { dialogInterface, _ -> dialogInterface.dismiss() }
+
+    return dialog
+}
+
+fun setupCalligraphy() {
+    ViewPump.init(ViewPump.builder()
+        .addInterceptor(CalligraphyInterceptor(
+            CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/Montserrat-Medium.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()))
+        .build())
 }

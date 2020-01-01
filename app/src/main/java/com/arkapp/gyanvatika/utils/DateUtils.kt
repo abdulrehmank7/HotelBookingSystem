@@ -1,7 +1,7 @@
 package com.arkapp.gyanvatika.utils
 
 import android.annotation.SuppressLint
-import com.arkapp.gyanvatika.ui.home.calendarView.BUFFER_DAY
+import com.arkapp.gyanvatika.ui.calendarView.BUFFER_DAY
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.absoluteValue
@@ -67,5 +67,12 @@ fun getCalendarRef(date: Int, month: Int, year: Int): Calendar {
     calendar.set(Calendar.DAY_OF_MONTH, date)
     calendar.set(Calendar.HOUR_OF_DAY, 1)
     calendar.set(Calendar.MINUTE, 0)
+    return calendar
+}
+
+
+fun Long.getCalendarRef(): Calendar {
+    val calendar = getCalendarForMidNight()
+    calendar.timeInMillis = this
     return calendar
 }

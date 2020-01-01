@@ -1,6 +1,7 @@
-package com.arkapp.gyanvatika.ui.home.newBooking
+package com.arkapp.gyanvatika.ui.newBooking
 
 import android.view.View
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.arkapp.gyanvatika.data.firestore.responses.Event
 import com.arkapp.gyanvatika.data.repository.EventRepository
@@ -70,4 +71,20 @@ class NewBookingViewModel(private val repositiory: EventRepository) : ViewModel(
         }
     }
 
+    fun updateExistingEventData(event: Event): LiveData<String> {
+        val updatedEvent = Event(
+            event.id,
+            startDate,
+            endDate,
+            startDateCalendar.timeInMillis.toString(),
+            endDateCalendar.timeInMillis.toString(),
+            customerName,
+            customerPhone,
+            bookingAmount,
+            otherInfo,
+            event.eventAddedDate,
+            event.eventAddedDateTimestamp
+        )
+        return repositiory.updateBooking(updatedEvent)
+    }
 }

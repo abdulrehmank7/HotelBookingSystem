@@ -1,4 +1,4 @@
-package com.arkapp.gyanvatika.ui.home.newBooking
+package com.arkapp.gyanvatika.ui.newBooking
 
 import android.annotation.SuppressLint
 import android.app.Dialog

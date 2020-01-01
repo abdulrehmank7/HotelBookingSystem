@@ -7,22 +7,23 @@
 
         <variable
             name="viewmodel"
-            type="com.arkapp.gyanvatika.ui.home.calendarView.CalendarViewModel" />
+            type="com.arkapp.gyanvatika.ui.calendarView.CalendarViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/parent">
 
         <include
             layout="@layout/layout_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/calendarView"
+            app:layout_constraintBottom_toBottomOf="@id/calendarViewFragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/calendarView" />
+            app:layout_constraintTop_toTopOf="@+id/calendarViewFragment" />
 
         <View
             android:id="@+id/view3"
@@ -91,6 +92,7 @@
             android:padding="8dp"
             android:text="@string/mon"
             android:textColor="@color/white"
+            android:textSize="11sp"
             app:layout_constraintEnd_toStartOf="@+id/textView21"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -106,6 +108,7 @@
             android:padding="8dp"
             android:text="@string/tue"
             android:textColor="@color/white"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView22"
             app:layout_constraintEnd_toStartOf="@+id/textView20"
             app:layout_constraintHorizontal_bias="0.5"
@@ -121,6 +124,7 @@
             android:padding="8dp"
             android:text="@string/wed"
             android:textColor="@color/white"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView21"
             app:layout_constraintEnd_toStartOf="@+id/textView19"
             app:layout_constraintHorizontal_bias="0.5"
@@ -136,6 +140,7 @@
             android:padding="8dp"
             android:text="@string/thu"
             android:textColor="@color/white"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView20"
             app:layout_constraintEnd_toStartOf="@+id/textView18"
             app:layout_constraintHorizontal_bias="0.5"
@@ -151,6 +156,7 @@
             android:padding="8dp"
             android:text="@string/fri"
             android:textColor="@color/white"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView19"
             app:layout_constraintEnd_toStartOf="@+id/textView17"
             app:layout_constraintHorizontal_bias="0.5"
@@ -166,6 +172,7 @@
             android:padding="8dp"
             android:text="@string/sat"
             android:textColor="@color/white"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView18"
             app:layout_constraintEnd_toStartOf="@+id/textView16"
             app:layout_constraintHorizontal_bias="0.5"
@@ -181,6 +188,7 @@
             android:padding="8dp"
             android:text="@string/sun"
             android:textColor="@color/white"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView17"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -188,7 +196,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView17" />
 
         <com.kizitonwose.calendarview.CalendarView
-            android:id="@+id/calendarView"
+            android:id="@+id/calendarViewFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cv_dayViewResource="@layout/calendar_day_layout"

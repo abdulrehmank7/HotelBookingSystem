@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/calendarView"
+        android:id="@+id/calendarViewFragment"
         android:title="@string/calendar"
-        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:icon="@drawable/ic_calendar"
         />
 
     <item
-        android:id="@+id/newBooking"
+        android:id="@+id/newBookingFragment"
         android:title="@string/add_booking"
-        android:icon="@android:drawable/ic_menu_agenda"
+        android:icon="@drawable/ic_calendar_add"
         />
 </menu>

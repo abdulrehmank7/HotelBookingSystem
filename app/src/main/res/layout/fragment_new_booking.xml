@@ -7,10 +7,11 @@
 
         <variable
             name="viewmodel"
-            type="com.arkapp.gyanvatika.ui.home.newBooking.NewBookingViewModel" />
+            type="com.arkapp.gyanvatika.ui.newBooking.NewBookingViewModel" />
     </data>
 
     <ScrollView
+        android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -18,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".ui.home.newBooking.NewBookingFragment">
+            tools:context=".ui.newBooking.NewBookingFragment">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -26,7 +27,7 @@
                 android:layout_height="28dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/ic_person"
-                android:tint="@color/colorPrimaryDark"
+                android:tint="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="@+id/customerName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/customerName"
@@ -60,7 +61,7 @@
                 android:layout_height="28dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/ic_phone"
-                android:tint="@color/colorPrimaryDark"
+                android:tint="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="@+id/customerPhone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/customerPhone"
@@ -94,7 +95,7 @@
                 android:layout_height="28dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/ic_rupee_symbol"
-                android:tint="@color/colorPrimaryDark"
+                android:tint="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="@+id/bookingAmount"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/bookingAmount"
@@ -128,7 +129,7 @@
                 android:layout_height="28dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/ic_info"
-                android:tint="@color/colorPrimaryDark"
+                android:tint="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="@+id/otherInfo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/otherInfo"
@@ -162,7 +163,7 @@
                 android:layout_height="38dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/ic_calendar"
-                android:tint="@color/colorPrimaryDark"
+                android:tint="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -256,7 +257,7 @@
                 android:text="@string/add_booking"
                 android:textAllCaps="false"
                 android:textSize="18sp"
-                app:icon="@drawable/ic_add"
+                app:icon="@drawable/ic_calendar_add"
                 app:iconSize="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

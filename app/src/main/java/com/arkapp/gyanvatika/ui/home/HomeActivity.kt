@@ -1,13 +1,16 @@
 package com.arkapp.gyanvatika.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.arkapp.gyanvatika.R
+import com.arkapp.gyanvatika.utils.setupCalligraphy
+import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.activity_home.*
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -17,18 +20,21 @@ class HomeActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.mainNavigationFragment)
         bottomNavigation.setupWithNavController(navController)
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.splashFragment) {
-                bottomNavigation.visibility = View.GONE
-            } else {
-                bottomNavigation.visibility = View.VISIBLE
-            }
-        }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.mainNavigationFragment).navigateUp()
+    }
+
+    fun hideBottomNavigation() {
+        bottomNavigation.visibility = View.GONE
+    }
+
+    fun showBottomNavigation() {
+        bottomNavigation.visibility = View.VISIBLE
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase!!))
     }
 }

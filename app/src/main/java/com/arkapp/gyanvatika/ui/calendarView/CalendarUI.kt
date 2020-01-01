@@ -1,4 +1,4 @@
-package com.arkapp.gyanvatika.ui.home.calendarView
+package com.arkapp.gyanvatika.ui.calendarView
 
 import android.content.Context
 import android.graphics.Typeface
@@ -66,23 +66,28 @@ class CalendarUI(private val calendarView: CalendarView,
         }
     }
 
+    fun setOneDayEvent(container: DayViewContainer) {
+        container.roundBackground.show()
+        container.endBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
+        container.startBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
+    }
 
     fun setEventStartDate(container: DayViewContainer) {
         container.roundBackground.show()
-        container.endBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
+        container.endBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.light_green))
         container.startBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
     }
 
     fun setEventEndDate(container: DayViewContainer) {
         container.roundBackground.show()
         container.endBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
-        container.startBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
+        container.startBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.light_green))
     }
 
     fun setEventBetweenDate(container: DayViewContainer) {
         container.roundBackground.invisible()
-        container.endBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
-        container.startBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
+        container.endBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.light_green))
+        container.startBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.light_green))
     }
 
 

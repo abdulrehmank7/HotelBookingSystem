@@ -30,3 +30,18 @@ suspend fun getMonthEvents(startTimestamp: Long, endTimestamp: Long): List<Event
         .toObjects(Event::class.java)
 
 }
+
+fun deleteEventDoc(event: Event): Task<Void> {
+    return getDBRef()
+        .collection(EVENTS_COLLECTION)
+        .document(event.id)
+        .delete()
+}
+
+fun updateEventDoc(event: Event): Task<Void> {
+
+    return getDBRef()
+        .collection(EVENTS_COLLECTION)
+        .document(event.id)
+        .set(event)
+}

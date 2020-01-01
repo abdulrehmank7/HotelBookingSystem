@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.arkapp.gyanvatika.R
 import com.arkapp.gyanvatika.databinding.FragmentSplashBinding
-import kotlinx.android.synthetic.main.activity_home.*
+import com.arkapp.gyanvatika.ui.home.HomeActivity
 
 class SplashFragment : Fragment(), SplashDataListener {
 
@@ -32,12 +32,13 @@ class SplashFragment : Fragment(), SplashDataListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as HomeActivity).showBottomNavigation()
         viewModel.fetchBookings()
     }
 
     override fun onDataFetched() {
         val navController = view!!.findNavController()
-        navController.navigate(R.id.openHomeScreen)
+        navController.navigate(R.id.action_splashFragment_to_calendarViewFragment)
     }
 
     override fun onFailed() {

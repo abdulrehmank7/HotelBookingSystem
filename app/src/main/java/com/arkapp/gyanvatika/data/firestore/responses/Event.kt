@@ -1,6 +1,9 @@
 package com.arkapp.gyanvatika.data.firestore.responses
 
-class Event {
+import android.os.Parcel
+import android.os.Parcelable
+
+class Event : Parcelable {
     var id = ""
     var startDate = ""
     var endDate = ""
@@ -12,6 +15,20 @@ class Event {
     var otherInfo = ""
     var eventAddedDate = ""
     var eventAddedDateTimestamp = ""
+
+    constructor(parcel: Parcel) : this() {
+        id = parcel.readString()!!
+        startDate = parcel.readString()!!
+        endDate = parcel.readString()!!
+        startDateTimestamp = parcel.readString()!!
+        endDateTimestamp = parcel.readString()!!
+        customerName = parcel.readString()!!
+        customerPhone = parcel.readString()!!
+        bookingAmount = parcel.readString()!!
+        otherInfo = parcel.readString()!!
+        eventAddedDate = parcel.readString()!!
+        eventAddedDateTimestamp = parcel.readString()!!
+    }
 
     constructor() : this("", "", "", "", "", "", "", "", "", "", "")
 
@@ -27,6 +44,34 @@ class Event {
         this.otherInfo = otherInfo
         this.eventAddedDate = eventAddedDate
         this.eventAddedDateTimestamp = eventAddedDateTimestamp
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
+        parcel.writeString(startDate)
+        parcel.writeString(endDate)
+        parcel.writeString(startDateTimestamp)
+        parcel.writeString(endDateTimestamp)
+        parcel.writeString(customerName)
+        parcel.writeString(customerPhone)
+        parcel.writeString(bookingAmount)
+        parcel.writeString(otherInfo)
+        parcel.writeString(eventAddedDate)
+        parcel.writeString(eventAddedDateTimestamp)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Event> {
+        override fun createFromParcel(parcel: Parcel): Event {
+            return Event(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Event?> {
+            return arrayOfNulls(size)
+        }
     }
 
 
