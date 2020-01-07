@@ -12,15 +12,26 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.arkapp.gyanvatika.R
 import com.arkapp.gyanvatika.data.firestore.responses.Event
-import com.arkapp.gyanvatika.data.repository.EventRepository
+import com.arkapp.gyanvatika.data.preferences.PrefSession
 import com.arkapp.gyanvatika.data.repository.SUCCESS
 import com.arkapp.gyanvatika.databinding.FragmentEventDetailBinding
 import com.arkapp.gyanvatika.ui.home.HomeActivity
 import com.arkapp.gyanvatika.utils.*
 import kotlinx.android.synthetic.main.fragment_event_detail.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.kcontext
 
-class EventDetailFragment : Fragment(), EventDetailListener {
+class EventDetailFragment : Fragment(), EventDetailListener, KodeinAware {
 
+    override val kodeinContext = kcontext<Fragment>(this)
+
+    override val kodein by kodein()
+
+    private val session: PrefSession by instance()
+
+    private val factory: EventDetailViewModelFactory by instance()
 
     private lateinit var event: Event
 
@@ -31,13 +42,10 @@ class EventDetailFragment : Fragment(), EventDetailListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val binding: FragmentEventDetailBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_event_detail, container, false)
+        val binding: FragmentEventDetailBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_event_detail, container, false)
 
-        val factory = EventDetailViewModelFactory(EventRepository())
-
-        viewModel = ViewModelProviders.of(this, factory)
-            .get(EventDetailViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, factory).get(EventDetailViewModel::class.java)
 
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
@@ -90,15 +98,17 @@ class EventDetailFragment : Fragment(), EventDetailListener {
         dialog.setPositiveButton(getString(R.string.delete)) { mDialog, _ ->
             val snackbar = parent.showIndefiniteSnack(getString(R.string.deleting_wait_msg))
 
-            viewModel.deleteEvent(event).observe(this, Observer {
-                snackbar!!.dismiss()
-                if (it == SUCCESS) {
-                    view!!.findNavController()
-                        .navigate(R.id.action_eventDetailFragment_to_calendarViewFragment)
-                    parent.showSnack(getString(R.string.successfully_deleted))
-                } else
-                    parent.showSnack(it)
-            })
+            viewModel.deleteEvent(event)
+                .observe(this, Observer {
+                    snackbar!!.dismiss()
+                    if (it == SUCCESS) {
+                        session.lastOpenedMonthTimestamp(0)
+                        parent.showSnack(getString(R.string.successfully_deleted))
+                        view!!.findNavController()
+                            .navigate(R.id.action_eventDetailFragment_to_calendarViewFragment)
+                    } else
+                        parent.showSnack(it)
+                })
             mDialog.dismiss()
         }.run { show() }
 

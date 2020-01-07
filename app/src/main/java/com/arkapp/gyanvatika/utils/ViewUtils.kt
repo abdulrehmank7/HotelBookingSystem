@@ -1,5 +1,6 @@
 package com.arkapp.gyanvatika.utils
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
@@ -69,6 +70,17 @@ fun View.showSnack(msg: String?) {
     }
 }
 
+fun View.showSnackLong(msg: String?) {
+    try {
+        Snackbar.make(
+            this,
+            msg!!,
+            Snackbar.LENGTH_LONG).show()
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+}
+
 fun View.showIndefiniteSnack(msg: String?): Snackbar? {
     try {
         return Snackbar.make(
@@ -118,4 +130,17 @@ fun setupCalligraphy() {
                 .setFontAttrId(R.attr.fontPath)
                 .build()))
         .build())
+}
+
+@SuppressLint("DefaultLocale")
+fun String?.capitalizeFirstWords(): String {
+    return if (this.isNullOrBlank())
+        ""
+    else {
+        var output = ""
+        val words = this.trim().split(" ").toMutableList()
+        for (word in words)
+            output += word.capitalize() + " "
+        output.trim()
+    }
 }

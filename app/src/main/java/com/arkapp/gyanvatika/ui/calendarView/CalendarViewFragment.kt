@@ -1,5 +1,7 @@
 package com.arkapp.gyanvatika.ui.calendarView
 
+import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,19 +9,31 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import com.arkapp.gyanvatika.R
-import com.arkapp.gyanvatika.data.repository.EventRepository
+import com.arkapp.gyanvatika.data.preferences.PrefSession
 import com.arkapp.gyanvatika.databinding.FragmentCalendarViewBinding
 import com.arkapp.gyanvatika.ui.home.HomeActivity
 import com.arkapp.gyanvatika.utils.*
 import com.arkapp.gyanvatika.utils.pojo.GeneratedEvents
-import com.kizitonwose.calendarview.model.CalendarDay
-import com.kizitonwose.calendarview.ui.DayBinder
 import kotlinx.android.synthetic.main.fragment_calendar_view.*
 import kotlinx.android.synthetic.main.layout_progress_bar.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.kcontext
+import org.threeten.bp.YearMonth
+import kotlin.math.roundToInt
 
-class CalendarViewFragment : Fragment(), CalendarViewListener {
+
+class CalendarViewFragment : Fragment(), CalendarViewListener, KodeinAware {
+
+    override val kodeinContext = kcontext<Fragment>(this)
+
+    override val kodein by kodein()
+
+    private val factory: CalendarViewModelFactory by instance()
+
+    private val session: PrefSession by instance()
 
     private lateinit var calenderUI: CalendarUI
 
@@ -28,13 +42,10 @@ class CalendarViewFragment : Fragment(), CalendarViewListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val binding: FragmentCalendarViewBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_calendar_view, container, false)
+        val binding: FragmentCalendarViewBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_calendar_view, container, false)
 
-        val factory = CalendarViewModelFactory(EventRepository())
-        viewModel = ViewModelProviders
-            .of(this, factory)
-            .get(CalendarViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, factory).get(CalendarViewModel::class.java)
 
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
@@ -51,9 +62,6 @@ class CalendarViewFragment : Fragment(), CalendarViewListener {
     override fun onStart() {
         super.onStart()
 
-        //getting the event for current month
-        viewModel.initEvent(getCalendarForMidNight())
-
         calenderUI = CalendarUI(calendarViewFragment, context!!)
 
         initCalendarUI()
@@ -62,17 +70,29 @@ class CalendarViewFragment : Fragment(), CalendarViewListener {
     private fun initCalendarUI() {
         progressBar.show()
 
-        calenderUI.initialize()
+        calenderUI.initialize(view!!, session)
 
         month.text = getMonthText(calenderUI.currentMonth.toString())
 
         calendarViewFragment.monthScrollListener = { date ->
 
+            printLog("month scrolled ${date.yearMonth}")
+
             progressBar.show()
-            viewModel.initEvent(getCalendarRef(1, date.month, date.year))
+
+            viewModel.getEventsForCalendarMonth(getCalendarRef(1, date.month, date.year))
             calenderUI.currentMonth = date.yearMonth
             month.text = getMonthText(calenderUI.currentMonth.toString())
 
+        }
+
+        month.setOnClickListener {
+
+            val dateListener = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, _ ->
+                calendarViewFragment.smoothScrollToMonth(YearMonth.of(year, monthOfYear + 1))
+            }
+
+            context!!.showDatePicker(dateListener)
         }
 
         rightArrowImg.setOnClickListener {
@@ -84,41 +104,26 @@ class CalendarViewFragment : Fragment(), CalendarViewListener {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onEventsFetched(generatedList: ArrayList<GeneratedEvents>) {
-
         try {
-            calendarViewFragment.dayBinder = object : DayBinder<DayViewContainer> {
+            calenderUI.setDatesOnCalender(generatedList, view!!)
 
-                override fun create(view: View) = DayViewContainer(view)
+            val monthBookingStatus = getMonthBookingStatus(generatedList)
 
-                override fun bind(container: DayViewContainer, day: CalendarDay) {
+            bookedDaysTv.text = "${monthBookingStatus.days} Days"
+            outOfDayTv.text = "Out of ${calenderUI.currentMonth.lengthOfMonth()} Days"
 
-                    calenderUI.setDateText(container, day)
-                    calenderUI.dimOtherMonth(container, day)
-                    calenderUI.highlightCurrentDate(container, day)
+            if (session.showBookingAmount()) {
+                if (monthBookingStatus.amount > 0) {
+                    paymentGroup.show()
+                    totalBookingAmountTv.text = "${getString(R.string.Rs)} ${monthBookingStatus.amount.roundToInt()}"
+                } else
+                    paymentGroup.hide()
+            } else
+                paymentGroup.hide()
 
-                    val event = searchEventInList(day, generatedList)
 
-                    container.dateTv.setOnClickListener {
-                        val navController = view!!.findNavController()
-                        val action = CalendarViewFragmentDirections
-                            .actionCalendarViewFragmentToEventDetailFragment()
-                        action.event = event
-                        action.openedDateTimestamp = getCalendarRef(day.day, day.date.monthValue, day.date.year).timeInMillis.toString()
-
-                        navController.navigate(action)
-                    }
-
-                    if (event != null) {
-                        when (event.eventDateType) {
-                            ONE_EVENT_DAY -> calenderUI.setOneDayEvent(container)
-                            START_EVENT_DAY -> calenderUI.setEventStartDate(container)
-                            END_EVENT_DAY -> calenderUI.setEventEndDate(container)
-                            BETWEEN_EVENT_DAY -> calenderUI.setEventBetweenDate(container)
-                        }
-                    }
-                }
-            }
             progressBar.hide()
         } catch (e: Exception) {
             e.printStackTrace()

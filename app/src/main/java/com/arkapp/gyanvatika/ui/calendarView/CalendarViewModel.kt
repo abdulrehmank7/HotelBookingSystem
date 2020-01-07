@@ -1,40 +1,46 @@
 package com.arkapp.gyanvatika.ui.calendarView
 
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
+import com.arkapp.gyanvatika.data.preferences.PrefSession
 import com.arkapp.gyanvatika.data.repository.EventRepository
+import com.arkapp.gyanvatika.utils.getCalendarRef
+import com.arkapp.gyanvatika.utils.printLog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.util.*
 
-class CalendarViewModel(private val repository: EventRepository) : ViewModel() {
+class CalendarViewModel(private val repository: EventRepository,
+                        private val session: PrefSession) : ViewModel() {
 
-    private lateinit var job: Job
 
     lateinit var listener: CalendarViewListener
 
 
-    fun initEvent(calendarDate: Calendar) {
+    fun getEventsForCalendarMonth(calendarDate: Calendar) {
+        printLog("event month timestamp...${calendarDate.timeInMillis}")
+        printLog("last timestamp...${session.lastOpenedMonthTimestamp()}")
 
-        job = CoroutineScope(Dispatchers.Main)
-            .launch {
-                val events = repository.getEvents(calendarDate)
-                val generatedList = generateMonthEventList(events)
-                listener.onEventsFetched(generatedList)
-            }
+        if (session.lastOpenedMonthTimestamp().toInt() != 0 &&
+            session.lastOpenedMonthTimestamp().getCalendarRef().get(Calendar.DAY_OF_YEAR) ==
+            calendarDate.get(Calendar.DAY_OF_YEAR)) {
 
-    }
+            listener.onEventsFetched(session.lastOpenedMonthEvent())
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    fun stop() {
-        job.cancel()
-    }
+        } else {
+            CoroutineScope(Dispatchers.Main)
+                .launch {
+                    session.lastOpenedMonthTimestamp(calendarDate.timeInMillis)
+                    printLog("setting last timestamp...${session.lastOpenedMonthTimestamp()}")
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun start() {
-        // code here
+                    val events = repository.getEvents(calendarDate)
+                    val generatedList = generateMonthEventList(events)
+
+                    session.lastOpenedMonthEvent(generatedList)
+
+
+                    listener.onEventsFetched(generatedList)
+                }
+        }
     }
 }

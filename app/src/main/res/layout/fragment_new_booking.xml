@@ -11,7 +11,7 @@
     </data>
 
     <ScrollView
-        android:id="@+id/parent"
+        android:id="@+id/parentLay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -20,6 +20,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:context=".ui.newBooking.NewBookingFragment">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/materialToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:elevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="@string/new_booking"
+                app:titleMarginStart="@dimen/title_margin"
+                app:titleTextAppearance="@style/TextAppearance.BoldFont"
+                app:titleTextColor="@color/white" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -44,7 +59,7 @@
                 android:hint="@string/customer_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/customerNameET"
@@ -180,18 +195,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/otherInfo" />
 
-            <TextView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/fromDateTv"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_border"
                 android:onClick="@{viewmodel::onStartDateClicked}"
                 android:padding="8dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textAppearance="@style/TextAppearance.BoldFont"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/textView"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
@@ -205,25 +219,24 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="@string/to"
+                android:textAppearance="@style/TextAppearance.LightFont"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/fromDateTv"
                 app:layout_constraintEnd_toStartOf="@+id/toDateTv"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/fromDateTv"
                 app:layout_constraintTop_toTopOf="@+id/fromDateTv" />
 
-            <TextView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/toDateTv"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_border"
                 android:onClick="@{viewmodel::onEndDateClicked}"
                 android:padding="8dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textAppearance="@style/TextAppearance.BoldFont"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/fromDateTv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -238,10 +251,9 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_border"
                 android:padding="8dp"
+                android:textAppearance="@style/TextAppearance.BoldFont"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
-                android:textStyle="bold"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fromDateTv" />

@@ -7,8 +7,8 @@ import com.arkapp.gyanvatika.data.firestore.deleteEventDoc
 import com.arkapp.gyanvatika.data.firestore.getMonthEvents
 import com.arkapp.gyanvatika.data.firestore.responses.Event
 import com.arkapp.gyanvatika.data.firestore.updateEventDoc
-import com.arkapp.gyanvatika.utils.getEndTimeStampForQuery
-import com.arkapp.gyanvatika.utils.getStartTimeStampForQuery
+import com.arkapp.gyanvatika.utils.getEndTimeStampForDBQuery
+import com.arkapp.gyanvatika.utils.getStartTimeStampForDBQuery
 import java.util.*
 
 const val SUCCESS = "success"
@@ -30,8 +30,8 @@ class EventRepository {
 
     suspend fun getEvents(selectedMonthCalendar: Calendar): List<Event> {
         return getMonthEvents(
-            getStartTimeStampForQuery(selectedMonthCalendar),
-            getEndTimeStampForQuery(selectedMonthCalendar))
+            getStartTimeStampForDBQuery(selectedMonthCalendar),
+            getEndTimeStampForDBQuery(selectedMonthCalendar))
     }
 
     fun deleteBooking(event: Event): LiveData<String> {

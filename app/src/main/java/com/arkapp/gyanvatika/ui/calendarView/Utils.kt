@@ -4,6 +4,7 @@ import com.arkapp.gyanvatika.data.firestore.responses.Event
 import com.arkapp.gyanvatika.utils.formatDate
 import com.arkapp.gyanvatika.utils.getCalendarForMidNight
 import com.arkapp.gyanvatika.utils.pojo.GeneratedEvents
+import com.arkapp.gyanvatika.utils.pojo.MonthBookingStatus
 import com.kizitonwose.calendarview.model.CalendarDay
 import java.util.*
 import kotlin.collections.ArrayList
@@ -17,12 +18,12 @@ const val ONE_EVENT_DAY = 4
 fun generateMonthEventList(eventList: List<Event>): ArrayList<GeneratedEvents> {
     val generatedList = ArrayList<GeneratedEvents>()
     for (event in eventList) {
-        val allDates = getAllBetweenDays(
+        val allDates = getAllDatesBetweenDays(
             event.startDateTimestamp.toLong(),
             event.endDateTimestamp.toLong())
 
         allDates.forEachIndexed { index, date ->
-            val type=
+            val type =
                 if (allDates.size == 1)
                     ONE_EVENT_DAY
                 else when (index) {
@@ -37,7 +38,7 @@ fun generateMonthEventList(eventList: List<Event>): ArrayList<GeneratedEvents> {
     return generatedList
 }
 
-fun getAllBetweenDays(startTimestamp: Long, endTimestamp: Long): ArrayList<Date> {
+fun getAllDatesBetweenDays(startTimestamp: Long, endTimestamp: Long): ArrayList<Date> {
     val dates: ArrayList<Date> = ArrayList()
 
     val startCalendar = getCalendarForMidNight()
@@ -54,8 +55,8 @@ fun getAllBetweenDays(startTimestamp: Long, endTimestamp: Long): ArrayList<Date>
     return dates
 }
 
-fun searchEventInList(date: CalendarDay, eventList: ArrayList<GeneratedEvents>): GeneratedEvents? {
-    val newDate = "${getTwoDigit(date.date.dayOfMonth)}-${getTwoDigit(date.date.monthValue)}-${date.date.year}"
+fun searchEventInList(calendarDay: CalendarDay, eventList: ArrayList<GeneratedEvents>): GeneratedEvents? {
+    val newDate = "${getTwoDigit(calendarDay.date.dayOfMonth)}-${getTwoDigit(calendarDay.date.monthValue)}-${calendarDay.date.year}"
     return eventList.find { it.eventDate == newDate }
 }
 
@@ -64,4 +65,24 @@ fun getTwoDigit(month: Int): String {
         "0$month"
     else
         month.toString()
+}
+
+fun getMonthBookingStatus(generatedEvents: ArrayList<GeneratedEvents>): MonthBookingStatus {
+    var totalBookedDays = 0
+    var totalBookingAmount = 0.0
+    var lastEventId = ""
+    for (generatedEvent in generatedEvents) {
+        if (generatedEvent.event != null) {
+            totalBookedDays += 1
+            if (generatedEvent.event!!.bookingAmount.isNotEmpty() &&
+                lastEventId != generatedEvent.event!!.id) {
+
+                lastEventId = generatedEvent.event!!.id
+                totalBookingAmount += generatedEvent.event!!.bookingAmount.toDouble()
+
+            }
+        }
+    }
+
+    return MonthBookingStatus(totalBookedDays, totalBookingAmount)
 }

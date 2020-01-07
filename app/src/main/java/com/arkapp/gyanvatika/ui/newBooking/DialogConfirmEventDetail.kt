@@ -42,7 +42,7 @@ class DialogConfirmEventDetail(context: Context, private val eventViewModel: New
             if (isNotDoubleClicked(1000)) {
                 progressBar.show()
                 conformBtn.isEnabled = false
-                eventViewModel.addEvent()
+                eventViewModel.getEventForCheckingExistingBooking()
             }
         }
     }

@@ -4,7 +4,7 @@
     <item
         android:id="@+id/calendarViewFragment"
         android:title="@string/calendar"
-        android:icon="@drawable/ic_calendar"
+        android:icon="@drawable/ic_calendar2"
         />
 
     <item
@@ -12,4 +12,9 @@
         android:title="@string/add_booking"
         android:icon="@drawable/ic_calendar_add"
         />
+
+    <item
+        android:id="@+id/moreFragment"
+        android:title="@string/more"
+        android:icon="@drawable/ic_settings"/>
 </menu>

@@ -11,14 +11,15 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/parent">
+        android:layout_height="match_parent">
 
         <include
             layout="@layout/layout_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/calendarViewFragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -35,16 +36,92 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/booked"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/bookedDaysTv"
+            app:layout_constraintStart_toStartOf="@+id/bookedDaysTv" />
+
+        <TextView
+            android:id="@+id/bookedDaysTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="0 Days"
+            android:textAppearance="@style/TextAppearance.BoldFont"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view3"
+            app:layout_constraintEnd_toStartOf="@+id/totalBookingAmountTv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view3" />
+
+        <TextView
+            android:id="@+id/outOfDayTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/bookedDaysTv"
+            app:layout_constraintTop_toBottomOf="@+id/bookedDaysTv"
+            tools:text="Out of 31 days" />
+
+        <TextView
+            android:id="@+id/totalBookingDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/est_booking_amount"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/totalBookingAmountTv"
+            app:layout_constraintStart_toStartOf="@+id/totalBookingAmountTv" />
+
+        <TextView
+            android:id="@+id/totalBookingAmountTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="\u20B9 0"
+            android:textAppearance="@style/TextAppearance.BoldFont"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bookedDaysTv"
+            app:layout_constraintTop_toTopOf="@+id/view3" />
+
+        <TextView
+            android:id="@+id/totalBookingDesc2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/total_booking_amount_for_the_month"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/totalBookingAmountTv"
+            app:layout_constraintTop_toBottomOf="@+id/totalBookingAmountTv" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/paymentGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:constraint_referenced_ids="totalBookingAmountTv,totalBookingDesc,totalBookingDesc2" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/month"
             android:layout_width="152dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="@drawable/bg_border"
             android:gravity="center"
             android:padding="8dp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textAppearance="@style/TextAppearance.BoldFont"
+            android:textColor="@color/white"
             android:textSize="22sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

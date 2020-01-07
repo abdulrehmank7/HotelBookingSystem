@@ -35,14 +35,14 @@ fun getCalendarForMidNight(): Calendar {
     return mCalendar
 }
 
-fun getStartTimeStampForQuery(calendar: Calendar): Long {
+fun getStartTimeStampForDBQuery(calendar: Calendar): Long {
     calendar.add(Calendar.MONTH, -1)
     val lastSeventhDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH) - BUFFER_DAY
     calendar.set(Calendar.DAY_OF_MONTH, lastSeventhDay)
     return calendar.timeInMillis
 }
 
-fun getEndTimeStampForQuery(calendar: Calendar): Long {
+fun getEndTimeStampForDBQuery(calendar: Calendar): Long {
     calendar.add(Calendar.MONTH, 2)
     calendar.set(Calendar.DAY_OF_MONTH, BUFFER_DAY)
     return calendar.timeInMillis

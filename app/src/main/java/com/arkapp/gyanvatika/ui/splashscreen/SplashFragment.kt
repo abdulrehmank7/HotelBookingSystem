@@ -11,8 +11,21 @@ import androidx.navigation.findNavController
 import com.arkapp.gyanvatika.R
 import com.arkapp.gyanvatika.databinding.FragmentSplashBinding
 import com.arkapp.gyanvatika.ui.home.HomeActivity
+import com.arkapp.gyanvatika.utils.openLoginScreen
+import com.arkapp.gyanvatika.utils.show
+import kotlinx.android.synthetic.main.fragment_splash.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.kcontext
 
-class SplashFragment : Fragment(), SplashDataListener {
+class SplashFragment : Fragment(), SplashDataListener, KodeinAware {
+
+    override val kodeinContext = kcontext<Fragment>(this)
+
+    override val kodein by kodein()
+
+    private val factory: SplashViewModelFactory by instance()
 
     private lateinit var viewModel: SplashViewModel
 
@@ -22,26 +35,32 @@ class SplashFragment : Fragment(), SplashDataListener {
         val binding: FragmentSplashBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_splash, container, false)
 
-        viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
+        viewModel = ViewModelProviders.of(activity!!, factory).get(SplashViewModel::class.java)
 
         viewModel.dataListener = this
         binding.viewmodel = viewModel
-        binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as HomeActivity).showBottomNavigation()
-        viewModel.fetchBookings()
+        (activity as HomeActivity).hideBottomNavigation()
+        viewModel.isUserLoggedIn()
     }
 
-    override fun onDataFetched() {
-        val navController = view!!.findNavController()
-        navController.navigate(R.id.action_splashFragment_to_calendarViewFragment)
+    override fun showLogin() {
+        loginBtn.show()
     }
 
-    override fun onFailed() {
+    override fun startLogin() {
+        openLoginScreen(activity!!)
     }
 
+    override fun openApp() {
+        try {
+            val navController = view!!.findNavController()
+            navController.navigate(R.id.action_splashFragment_to_calendarViewFragment)
+        } catch (e: Exception) {
+        }
+    }
 }
