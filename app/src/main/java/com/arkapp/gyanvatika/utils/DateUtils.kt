@@ -48,9 +48,14 @@ fun getEndTimeStampForDBQuery(calendar: Calendar): Long {
     return calendar.timeInMillis
 }
 
-fun getMonthText(date: String): String {
-    val month = MONTH_NAME[date.substring(5).toInt() - 1]
-    return "$month - ${date.substring(0, 4)}"
+fun getMonthTextFromYearMonth(yearMonth: String): String {
+    val month = MONTH_NAME[yearMonth.substring(5).toInt() - 1]
+    return "$month - ${yearMonth.substring(0, 4)}"
+}
+
+fun getMonthTextFromDateTxt(date: String): String {
+    val month = MONTH_NAME[date.substring(3,5).toInt() - 1]
+    return "$month - ${date.substring( 6)}"
 }
 
 fun getCurrentDayOfYear() = getCalendarForCurrentTime().get(Calendar.DAY_OF_YEAR)
@@ -58,6 +63,11 @@ fun getCurrentDayOfYear() = getCalendarForCurrentTime().get(Calendar.DAY_OF_YEAR
 @SuppressLint("SimpleDateFormat")
 fun formatDate(date: Date): String {
     return SimpleDateFormat("dd-MM-yyyy").format(date)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun formatDate(calendar: Calendar): String {
+    return SimpleDateFormat("dd-MM-yyyy").format(calendar.time)
 }
 
 fun getCalendarRef(date: Int, month: Int, year: Int): Calendar {

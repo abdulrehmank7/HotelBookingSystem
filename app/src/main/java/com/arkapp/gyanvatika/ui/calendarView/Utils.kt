@@ -1,8 +1,7 @@
 package com.arkapp.gyanvatika.ui.calendarView
 
 import com.arkapp.gyanvatika.data.firestore.responses.Event
-import com.arkapp.gyanvatika.utils.formatDate
-import com.arkapp.gyanvatika.utils.getCalendarForMidNight
+import com.arkapp.gyanvatika.utils.*
 import com.arkapp.gyanvatika.utils.pojo.GeneratedEvents
 import com.arkapp.gyanvatika.utils.pojo.MonthBookingStatus
 import com.kizitonwose.calendarview.model.CalendarDay
@@ -67,19 +66,20 @@ fun getTwoDigit(month: Int): String {
         month.toString()
 }
 
-fun getMonthBookingStatus(generatedEvents: ArrayList<GeneratedEvents>): MonthBookingStatus {
+fun getMonthBookingStatus(generatedEvents: ArrayList<GeneratedEvents>, monthTxt: String): MonthBookingStatus {
     var totalBookedDays = 0
     var totalBookingAmount = 0.0
     var lastEventId = ""
     for (generatedEvent in generatedEvents) {
         if (generatedEvent.event != null) {
-            totalBookedDays += 1
-            if (generatedEvent.event!!.bookingAmount.isNotEmpty() &&
-                lastEventId != generatedEvent.event!!.id) {
+            if (getMonthTextFromDateTxt(generatedEvent.eventDate) == monthTxt) {
+                totalBookedDays += 1
+                if (generatedEvent.event!!.bookingAmount.isNotEmpty() &&
+                    lastEventId != generatedEvent.event!!.id) {
 
-                lastEventId = generatedEvent.event!!.id
-                totalBookingAmount += generatedEvent.event!!.bookingAmount.toDouble()
-
+                    lastEventId = generatedEvent.event!!.id
+                    totalBookingAmount += generatedEvent.event!!.bookingAmount.toDouble()
+                }
             }
         }
     }

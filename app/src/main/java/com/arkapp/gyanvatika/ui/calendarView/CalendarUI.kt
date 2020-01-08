@@ -21,26 +21,26 @@ import kotlin.collections.ArrayList
 class CalendarUI(private val calendarView: CalendarView,
                  private val context: Context) {
 
-    lateinit var currentMonth: YearMonth
+    lateinit var currentYearMonth: YearMonth
 
     fun initialize(fragmentView: View, session: PrefSession) {
 
-        currentMonth =
+        currentYearMonth =
             if (session.lastOpenedMonthTimestamp() == 0.toLong())
                 YearMonth.now()
             else {
                 val lastMonthCalendarRef = session.lastOpenedMonthTimestamp().getCalendarRef()
                 YearMonth.of(lastMonthCalendarRef.get(Calendar.YEAR), lastMonthCalendarRef.get(Calendar.MONTH)+1)
             }
-        printLog("init year month $currentMonth")
-        val firstMonth = currentMonth.minusMonths(50)
-        val lastMonth = currentMonth.plusMonths(120)
+        printLog("init year month $currentYearMonth")
+        val firstMonth = currentYearMonth.minusMonths(50)
+        val lastMonth = currentYearMonth.plusMonths(120)
         val firstDayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
 
         setDatesOnCalender(ArrayList(), fragmentView)
 
         calendarView.setup(firstMonth, lastMonth, firstDayOfWeek)
-        calendarView.scrollToMonth(currentMonth)
+        calendarView.scrollToMonth(currentYearMonth)
     }
 
     fun setDateText(container: DayViewContainer, day: CalendarDay) {

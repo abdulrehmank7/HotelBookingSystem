@@ -72,7 +72,7 @@ class CalendarViewFragment : Fragment(), CalendarViewListener, KodeinAware {
 
         calenderUI.initialize(view!!, session)
 
-        month.text = getMonthText(calenderUI.currentMonth.toString())
+        month.text = getMonthTextFromYearMonth(calenderUI.currentYearMonth.toString())
 
         calendarViewFragment.monthScrollListener = { date ->
 
@@ -81,8 +81,8 @@ class CalendarViewFragment : Fragment(), CalendarViewListener, KodeinAware {
             progressBar.show()
 
             viewModel.getEventsForCalendarMonth(getCalendarRef(1, date.month, date.year))
-            calenderUI.currentMonth = date.yearMonth
-            month.text = getMonthText(calenderUI.currentMonth.toString())
+            calenderUI.currentYearMonth = date.yearMonth
+            month.text = getMonthTextFromYearMonth(calenderUI.currentYearMonth.toString())
 
         }
 
@@ -96,11 +96,11 @@ class CalendarViewFragment : Fragment(), CalendarViewListener, KodeinAware {
         }
 
         rightArrowImg.setOnClickListener {
-            calendarViewFragment.smoothScrollToMonth(calenderUI.currentMonth.plusMonths(1))
+            calendarViewFragment.smoothScrollToMonth(calenderUI.currentYearMonth.plusMonths(1))
         }
 
         leftArrowImg.setOnClickListener {
-            calendarViewFragment.smoothScrollToMonth(calenderUI.currentMonth.minusMonths(1))
+            calendarViewFragment.smoothScrollToMonth(calenderUI.currentYearMonth.minusMonths(1))
         }
     }
 
@@ -109,10 +109,10 @@ class CalendarViewFragment : Fragment(), CalendarViewListener, KodeinAware {
         try {
             calenderUI.setDatesOnCalender(generatedList, view!!)
 
-            val monthBookingStatus = getMonthBookingStatus(generatedList)
+            val monthBookingStatus = getMonthBookingStatus(generatedList, month.text.toString())
 
             bookedDaysTv.text = "${monthBookingStatus.days} Days"
-            outOfDayTv.text = "Out of ${calenderUI.currentMonth.lengthOfMonth()} Days"
+            outOfDayTv.text = "Out of ${calenderUI.currentYearMonth.lengthOfMonth()} Days"
 
             if (session.showBookingAmount()) {
                 if (monthBookingStatus.amount > 0) {

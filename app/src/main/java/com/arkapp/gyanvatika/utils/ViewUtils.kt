@@ -6,6 +6,7 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.Group
@@ -143,4 +144,12 @@ fun String?.capitalizeFirstWords(): String {
             output += word.capitalize() + " "
         output.trim()
     }
+}
+
+fun Context?.makeCall(phoneNo: String?) {
+    if (!phoneNo.isNullOrEmpty()) {
+        val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNo, null))
+        this!!.startActivity(intent)
+    } else
+        this!!.toast("Oops! Phone no. is invalid")
 }

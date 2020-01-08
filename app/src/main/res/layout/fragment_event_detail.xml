@@ -10,433 +10,491 @@
             type="com.arkapp.gyanvatika.ui.eventDetails.EventDetailViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animateLayoutChanges="true"
-        android:background="@color/colorPrimaryDark"
-        tools:context=".ui.eventDetails.EventDetailFragment">
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/booking_details"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textAppearance="@style/TextAppearance.BoldFont"            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@{viewmodel.currentDate}"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textAppearance="@style/TextAppearance.BoldFont"            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/topCard"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="52dp"
-            android:layout_marginEnd="24dp"
-            android:background="@color/white"
-            app:cardCornerRadius="@dimen/radius"
-            app:cardElevation="8dp"
-            app:layout_constraintBottom_toBottomOf="@id/otherInfo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="@color/colorPrimaryDark"
+            tools:context=".ui.eventDetails.EventDetailFragment">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView2"
-            android:layout_width="78dp"
-            android:layout_height="78dp"
-            app:cardCornerRadius="39dp"
-            app:cardElevation="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/topCard"
-            app:layout_constraintEnd_toEndOf="@+id/topCard"
-            app:layout_constraintStart_toStartOf="@+id/topCard"
-            app:layout_constraintTop_toTopOf="@+id/topCard">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/callBtn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginEnd="16dp"
+                android:background="?selectableItemBackground"
+                android:onClick="@{viewmodel::onCallClicked}"
+                android:visibility="gone"
+                app:cardCornerRadius="19dp"
+                app:cardElevation="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView23">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="8dp"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_phone"
+                    android:tint="@color/colorPrimary" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/booking_details"
+                android:textAppearance="@style/TextAppearance.BoldFont"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{viewmodel.currentDate}"
+                android:textAppearance="@style/TextAppearance.BoldFont"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/topCard"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="24dp"
+                android:background="@color/white"
+                app:cardCornerRadius="@dimen/radius"
+                app:cardElevation="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/otherInfo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView2"
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                app:cardCornerRadius="39dp"
+                app:cardElevation="12dp"
+                app:layout_constraintBottom_toTopOf="@+id/topCard"
+                app:layout_constraintEnd_toEndOf="@+id/topCard"
+                app:layout_constraintStart_toStartOf="@+id/topCard"
+                app:layout_constraintTop_toTopOf="@+id/topCard">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="8dp"
+                    android:src="@drawable/ic_person"
+                    android:tint="@color/colorPrimaryDark" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/bookingAddedOnTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/white"
+                android:text="@{viewmodel.eventAddedDate}"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/bottomCard"
+                app:layout_constraintStart_toStartOf="@+id/bottomCard"
+                app:layout_constraintTop_toBottomOf="@+id/bottomCard" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:elevation="8dp"
+                android:text="@string/user_name"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/userName"
+                app:layout_constraintStart_toStartOf="@+id/topCard"
+                app:layout_constraintTop_toTopOf="@+id/userName" />
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:elevation="8dp"
+                android:gravity="end"
+                android:text="@{viewmodel.customerName}"
+                android:textAppearance="@style/TextAppearance.BoldFont"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/topCard"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView2"
+                tools:text="Abdul Rehman" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:elevation="8dp"
+                android:text="@string/phone_no"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/phone"
+                app:layout_constraintStart_toStartOf="@+id/topCard"
+                app:layout_constraintTop_toTopOf="@+id/phone" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:elevation="8dp"
+                android:gravity="end"
+                android:text="@{viewmodel.customerPhone}"
+                android:textAppearance="@style/TextAppearance.BoldFont"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/topCard"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@+id/userName"
+                tools:text="70733425545" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:elevation="8dp"
+                android:text="@string/booking_amount"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/amount"
+                app:layout_constraintStart_toStartOf="@+id/topCard"
+                app:layout_constraintTop_toTopOf="@+id/amount" />
+
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:elevation="8dp"
+                android:gravity="end"
+                android:text="@{viewmodel.bookingAmount}"
+                android:textAppearance="@style/TextAppearance.BoldFont"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/topCard"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/phone"
+                tools:text="12000" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:elevation="8dp"
+                android:paddingBottom="16dp"
+                android:text="@string/other_info_title"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/otherInfo"
+                app:layout_constraintStart_toStartOf="@+id/topCard"
+                app:layout_constraintTop_toTopOf="@+id/otherInfo" />
+
+            <TextView
+                android:id="@+id/otherInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:elevation="8dp"
+                android:gravity="end"
+                android:paddingBottom="16dp"
+                android:text="@{viewmodel.otherInfo}"
+                android:textAppearance="@style/TextAppearance.BoldFont"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/topCard"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView12"
+                app:layout_constraintTop_toBottomOf="@+id/amount"
+                tools:text="Remaining items" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/bottomCard"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="62dp"
+                android:layout_marginEnd="24dp"
+                android:background="@color/white"
+                app:cardCornerRadius="@dimen/radius"
+                app:cardElevation="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/totalDay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topCard" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView3"
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                app:cardCornerRadius="39dp"
+                app:cardElevation="12dp"
+                app:layout_constraintBottom_toTopOf="@+id/bottomCard"
+                app:layout_constraintEnd_toEndOf="@+id/bottomCard"
+                app:layout_constraintStart_toStartOf="@+id/bottomCard"
+                app:layout_constraintTop_toTopOf="@+id/bottomCard">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_calendar"
+                    android:tint="@color/colorPrimaryDark" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:elevation="8dp"
+                android:text="@string/booking_start_date"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/startDate"
+                app:layout_constraintStart_toStartOf="@+id/bottomCard"
+                app:layout_constraintTop_toTopOf="@+id/startDate" />
+
+            <TextView
+                android:id="@+id/startDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:elevation="8dp"
+                android:gravity="end"
+                android:text="@{viewmodel.startDate}"
+                android:textAppearance="@style/TextAppearance.BoldFont"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/bottomCard"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView13"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView3"
+                tools:text="31-Dec-2019" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:elevation="8dp"
+                android:text="@string/booking_end_date"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/endDate"
+                app:layout_constraintStart_toStartOf="@+id/bottomCard"
+                app:layout_constraintTop_toTopOf="@+id/endDate" />
+
+            <TextView
+                android:id="@+id/endDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:elevation="8dp"
+                android:gravity="end"
+                android:text="@{viewmodel.endDate}"
+                android:textAppearance="@style/TextAppearance.BoldFont"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/bottomCard"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView14"
+                app:layout_constraintTop_toBottomOf="@+id/startDate"
+                tools:text="02-Dec-2019" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:elevation="8dp"
+                android:paddingBottom="16dp"
+                android:text="@string/total_booked_days"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/totalDay"
+                app:layout_constraintStart_toStartOf="@+id/bottomCard"
+                app:layout_constraintTop_toTopOf="@+id/totalDay" />
+
+            <TextView
+                android:id="@+id/totalDay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:elevation="8dp"
+                android:gravity="end"
+                android:paddingBottom="16dp"
+                android:text="@{viewmodel.totalDays}"
+                android:textAppearance="@style/TextAppearance.BoldFont"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/bottomCard"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView15"
+                app:layout_constraintTop_toBottomOf="@+id/endDate"
+                tools:text="02-Dec-2019" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/mainFab"
+                style="@style/Widget.MaterialComponents.FloatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/white"
+                android:onClick="@{viewmodel::mainFabClicked}"
+                android:visibility="gone"
+                app:borderWidth="0dp"
+                app:elevation="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:rippleColor="@color/colorPrimary"
+                app:showMotionSpec="@anim/nav_default_pop_enter_anim"
+                app:srcCompat="@drawable/ic_add"
+                app:tint="@color/colorPrimary" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/deleteFab"
+                style="@style/Widget.MaterialComponents.FloatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="@{viewmodel::deleteFabClicked}"
+                android:visibility="gone"
+                app:borderWidth="0dp"
+                app:elevation="12dp"
+                app:fabSize="mini"
+                app:hideMotionSpec="@anim/nav_default_pop_exit_anim"
+                app:layout_constraintBottom_toTopOf="@+id/editFab"
+                app:layout_constraintEnd_toEndOf="@+id/mainFab"
+                app:layout_constraintHorizontal_bias="0.625"
+                app:layout_constraintStart_toStartOf="@+id/mainFab"
+                app:maxImageSize="18dp"
+                app:rippleColor="@color/colorPrimary"
+                app:showMotionSpec="@anim/nav_default_pop_enter_anim"
+                app:srcCompat="@drawable/ic_delete"
+                app:tint="@color/white" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/editFab"
+                style="@style/Widget.MaterialComponents.FloatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="@{viewmodel::editFabClicked}"
+                android:visibility="gone"
+                app:borderWidth="0dp"
+                app:elevation="12dp"
+                app:fabSize="mini"
+                app:hideMotionSpec="@anim/nav_default_pop_exit_anim"
+                app:layout_constraintBottom_toTopOf="@+id/mainFab"
+                app:layout_constraintEnd_toEndOf="@+id/mainFab"
+                app:layout_constraintStart_toStartOf="@+id/mainFab"
+                app:maxImageSize="18dp"
+                app:rippleColor="@color/colorPrimary"
+                app:showMotionSpec="@anim/nav_default_pop_enter_anim"
+                app:srcCompat="@drawable/ic_edit"
+                app:tint="@color/white" />
+
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/allDetailsGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="phone,topCard,materialCardView2,textView9,textView10,textView11,textView12,textView13,textView14,textView15,userName,amount,otherInfo,bottomCard,materialCardView3,startDate,endDate,totalDay"
+                tools:visibility="visible" />
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="8dp"
-                android:src="@drawable/ic_person"
-                android:tint="@color/colorPrimaryDark" />
-        </com.google.android.material.card.MaterialCardView>
+                android:id="@+id/noBookingImg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_leafless_tree"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:elevation="8dp"
-            android:text="@string/user_name"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/userName"
-            app:layout_constraintStart_toStartOf="@+id/topCard"
-            app:layout_constraintTop_toTopOf="@+id/userName" />
+            <TextView
+                android:id="@+id/noBookingTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_booking_found"
+                android:textAppearance="@style/TextAppearance.BoldFont"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
-            android:elevation="8dp"
-            android:gravity="end"
-            android:text="@{viewmodel.customerName}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textAppearance="@style/TextAppearance.BoldFont"            app:layout_constraintEnd_toEndOf="@+id/topCard"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView2"
-            tools:text="Abdul Rehman" />
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/noBookingGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="noBookingImg,noBookingTv"
+                tools:visibility="gone" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:elevation="8dp"
-            android:text="@string/phone_no"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/phone"
-            app:layout_constraintStart_toStartOf="@+id/topCard"
-            app:layout_constraintTop_toTopOf="@+id/phone" />
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/phone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:elevation="8dp"
-            android:gravity="end"
-            android:text="@{viewmodel.customerPhone}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textAppearance="@style/TextAppearance.BoldFont"            app:layout_constraintEnd_toEndOf="@+id/topCard"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView10"
-            app:layout_constraintTop_toBottomOf="@+id/userName"
-            tools:text="70733425545" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:elevation="8dp"
-            android:text="@string/booking_amount"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/amount"
-            app:layout_constraintStart_toStartOf="@+id/topCard"
-            app:layout_constraintTop_toTopOf="@+id/amount" />
-
-        <TextView
-            android:id="@+id/amount"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:elevation="8dp"
-            android:gravity="end"
-            android:text="@{viewmodel.bookingAmount}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textAppearance="@style/TextAppearance.BoldFont"            app:layout_constraintEnd_toEndOf="@+id/topCard"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/phone"
-            tools:text="12000" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:elevation="8dp"
-            android:paddingBottom="16dp"
-            android:text="@string/other_info_title"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/otherInfo"
-            app:layout_constraintStart_toStartOf="@+id/topCard"
-            app:layout_constraintTop_toTopOf="@+id/otherInfo" />
-
-        <TextView
-            android:id="@+id/otherInfo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:elevation="8dp"
-            android:gravity="end"
-            android:paddingBottom="16dp"
-            android:text="@{viewmodel.otherInfo}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textAppearance="@style/TextAppearance.BoldFont"            app:layout_constraintEnd_toEndOf="@+id/topCard"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView12"
-            app:layout_constraintTop_toBottomOf="@+id/amount"
-            tools:text="Remaining items" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/bottomCard"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="62dp"
-            android:layout_marginEnd="24dp"
-            android:background="@color/white"
-            app:cardCornerRadius="@dimen/radius"
-            app:cardElevation="8dp"
-            app:layout_constraintBottom_toBottomOf="@id/totalDay"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/topCard" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView3"
-            android:layout_width="78dp"
-            android:layout_height="78dp"
-            app:cardCornerRadius="39dp"
-            app:cardElevation="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottomCard"
-            app:layout_constraintEnd_toEndOf="@+id/bottomCard"
-            app:layout_constraintStart_toStartOf="@+id/bottomCard"
-            app:layout_constraintTop_toTopOf="@+id/bottomCard">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="12dp"
-                android:src="@drawable/ic_calendar"
-                android:tint="@color/colorPrimaryDark" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:elevation="8dp"
-            android:text="@string/booking_start_date"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/startDate"
-            app:layout_constraintStart_toStartOf="@+id/bottomCard"
-            app:layout_constraintTop_toTopOf="@+id/startDate" />
-
-        <TextView
-            android:id="@+id/startDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
-            android:elevation="8dp"
-            android:gravity="end"
-            android:text="@{viewmodel.startDate}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textAppearance="@style/TextAppearance.BoldFont"            app:layout_constraintEnd_toEndOf="@+id/bottomCard"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView13"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView3"
-            tools:text="31-Dec-2019" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:elevation="8dp"
-            android:text="@string/booking_end_date"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/endDate"
-            app:layout_constraintStart_toStartOf="@+id/bottomCard"
-            app:layout_constraintTop_toTopOf="@+id/endDate" />
-
-        <TextView
-            android:id="@+id/endDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:elevation="8dp"
-            android:gravity="end"
-            android:text="@{viewmodel.endDate}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textAppearance="@style/TextAppearance.BoldFont"            app:layout_constraintEnd_toEndOf="@+id/bottomCard"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView14"
-            app:layout_constraintTop_toBottomOf="@+id/startDate"
-            tools:text="02-Dec-2019" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:elevation="8dp"
-            android:paddingBottom="16dp"
-            android:text="@string/total_booked_days"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/totalDay"
-            app:layout_constraintStart_toStartOf="@+id/bottomCard"
-            app:layout_constraintTop_toTopOf="@+id/totalDay" />
-
-        <TextView
-            android:id="@+id/totalDay"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:elevation="8dp"
-            android:gravity="end"
-            android:paddingBottom="16dp"
-            android:text="@{viewmodel.totalDays}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textAppearance="@style/TextAppearance.BoldFont"            app:layout_constraintEnd_toEndOf="@+id/bottomCard"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView15"
-            app:layout_constraintTop_toBottomOf="@+id/endDate"
-            tools:text="02-Dec-2019" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/mainFab"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/white"
-            android:onClick="@{viewmodel::mainFabClicked}"
-            android:visibility="gone"
-            app:borderWidth="0dp"
-            app:elevation="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:rippleColor="@color/colorPrimary"
-            app:showMotionSpec="@anim/nav_default_pop_enter_anim"
-            app:srcCompat="@drawable/ic_add"
-            app:tint="@color/colorPrimary" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/deleteFab"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/colorAccent"
-            android:onClick="@{viewmodel::deleteFabClicked}"
-            android:visibility="gone"
-            app:borderWidth="0dp"
-            app:elevation="12dp"
-            app:fabSize="mini"
-            app:hideMotionSpec="@anim/nav_default_pop_exit_anim"
-            app:layout_constraintBottom_toTopOf="@+id/editFab"
-            app:layout_constraintEnd_toEndOf="@+id/mainFab"
-            app:layout_constraintHorizontal_bias="0.625"
-            app:layout_constraintStart_toStartOf="@+id/mainFab"
-            app:maxImageSize="18dp"
-            app:rippleColor="@color/colorPrimary"
-            app:showMotionSpec="@anim/nav_default_pop_enter_anim"
-            app:srcCompat="@drawable/ic_delete"
-            app:tint="@color/white" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/editFab"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/colorAccent"
-            android:onClick="@{viewmodel::editFabClicked}"
-            android:visibility="gone"
-            app:borderWidth="0dp"
-            app:elevation="12dp"
-            app:fabSize="mini"
-            app:hideMotionSpec="@anim/nav_default_pop_exit_anim"
-            app:layout_constraintBottom_toTopOf="@+id/mainFab"
-            app:layout_constraintEnd_toEndOf="@+id/mainFab"
-            app:layout_constraintStart_toStartOf="@+id/mainFab"
-            app:maxImageSize="18dp"
-            app:rippleColor="@color/colorPrimary"
-            app:showMotionSpec="@anim/nav_default_pop_enter_anim"
-            app:srcCompat="@drawable/ic_edit"
-            app:tint="@color/white" />
-
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/allDetailsGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:constraint_referenced_ids="phone,topCard,materialCardView2,textView9,textView10,textView11,textView12,textView13,textView14,textView15,userName,amount,otherInfo,bottomCard,materialCardView3,startDate,endDate,totalDay" />
-
-        <ImageView
-            android:id="@+id/noBookingImg"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_leafless_tree"
-            android:tint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <TextView
-            android:id="@+id/noBookingTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/no_booking_found"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textAppearance="@style/TextAppearance.BoldFont"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/noBookingGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:constraint_referenced_ids="noBookingImg,noBookingTv"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

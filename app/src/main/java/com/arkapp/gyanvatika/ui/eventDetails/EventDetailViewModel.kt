@@ -8,30 +8,35 @@ import com.arkapp.gyanvatika.data.repository.EventRepository
 
 class EventDetailViewModel(private val repository: EventRepository) : ViewModel() {
 
-    var customerName: String = ""
-    var customerPhone: String = ""
-    var bookingAmount: String = ""
-    var otherInfo: String = ""
-    var startDate: String = ""
-    var endDate: String = ""
-    var totalDays: String = ""
-    var currentDate: String = ""
+    var customerName = ""
+    var customerPhone = ""
+    var bookingAmount = ""
+    var otherInfo = ""
+    var startDate = ""
+    var endDate = ""
+    var totalDays = ""
+    var currentDate = ""
+    var eventAddedDate = ""
 
     lateinit var listener: EventDetailListener
 
-    fun mainFabClicked(view: View){
+    fun mainFabClicked(view: View) {
         listener.onMainFabClicked()
     }
 
-    fun deleteFabClicked(view: View){
+    fun deleteFabClicked(view: View) {
         listener.onDeleteClicked()
     }
 
-    fun editFabClicked(view: View){
+    fun editFabClicked(view: View) {
         listener.onEditClicked()
     }
 
     fun deleteEvent(event: Event): LiveData<String> {
-     return repository.deleteBooking(event)
+        return repository.deleteBooking(event)
+    }
+
+    fun onCallClicked(view: View) {
+        listener.makeCall()
     }
 }

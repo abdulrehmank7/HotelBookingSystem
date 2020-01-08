@@ -29,7 +29,6 @@
     <string name="booking_end_date">Booking End Date</string>
 
     <string name="Rs">\u20B9</string>
-    <string name="unavailable">unavailable!</string>
     <string name="booking_details">Booking Details</string>
     <string name="total_booked_days">Total Booked Days</string>
     <string name="delete_booking">Delete Booking!</string>
@@ -37,16 +36,14 @@
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
     <string name="successfully_deleted">Successfully deleted the Booking.</string>
-    <string name="deleting_wait_msg">Deleting booking please wait…</string>
+    <string name="deleting_wait_msg">Please wait… Deleting event</string>
     <string name="update_booking">Update Booking</string>
     <string name="updating_detail">Updating booking details…</string>
     <string name="successfully_updated">Successfully updated the details.</string>
     <string name="no_booking_found">No Booking Found!</string>
-    <string name="gyan_vatika_booking_details">Gyan Vatika\nBookings System</string>
     <string name="resort">Resort</string>
     <string name="invalid_booking">Oops! Gyan vatika already booked for the dates.</string>
     <string name="sign_in_msg">Please sign in to proceed!</string>
-    <string name="google_sign_in">Google Sign in</string>
     <string name="new_booking">New Booking</string>
     <string name="booked">Booked</string>
     <string name="est_booking_amount">Est. Amount</string>
@@ -55,6 +52,10 @@
     <string name="show_booking_amount">Show booking amount</string>
     <string name="log_out">Log out</string>
     <string name="logout_desc">Do you want to log out?</string>
-    <string name="login">Login</string>
+    <string name="login_to_continue">Login to continue</string>
+    <string name="developed_by">Developed By:</string>
+    <string name="developer">Abdul Rehman</string>
+    <string name="dev_phone">+917073342591</string>
+    <string name="dev_mail">abdulrehman0796@gmail.com</string>
 
 </resources>

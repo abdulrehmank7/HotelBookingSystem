@@ -72,6 +72,7 @@ class EventDetailFragment : Fragment(), EventDetailListener, KodeinAware {
             viewModel.otherInfo = event.otherInfo.availableText()
             viewModel.startDate = event.startDate.availableText()
             viewModel.endDate = event.endDate.availableText()
+            viewModel.eventAddedDate = "Booking added on\n${formatDate(event.eventAddedDateTimestamp.toLong().getCalendarRef())}"
 
             viewModel.totalDays = "${getTotalDayBetweenDates(
                 event.startDateTimestamp.toLong().getCalendarRef(),
@@ -79,10 +80,12 @@ class EventDetailFragment : Fragment(), EventDetailListener, KodeinAware {
 
             allDetailsGroup.show()
             noBookingGroup.hide()
+            callBtn.show()
 
         } else {
             allDetailsGroup.hide()
             noBookingGroup.show()
+            callBtn.hide()
         }
 
         mainFab.show()
@@ -140,6 +143,10 @@ class EventDetailFragment : Fragment(), EventDetailListener, KodeinAware {
         action.startTimestamp = safeArgs.openedDateTimestamp
 
         navController.navigate(action)
+    }
+
+    override fun makeCall() {
+        context.makeCall(event.customerPhone)
     }
 
     private fun resetFab() {
