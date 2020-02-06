@@ -11,32 +11,74 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         tools:context=".ui.splash.SplashActivity">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="158dp"
-            android:layout_height="158dp"
-            android:layout_marginTop="32dp"
-            app:cardBackgroundColor="@android:color/background_dark"
-            app:cardCornerRadius="99dp"
-            app:cardElevation="12dp"
+        <ImageView
+            android:id="@+id/logoImg"
+            android:layout_width="298dp"
+            android:layout_height="298dp"
+            android:layout_gravity="center"
+            android:paddingStart="18dp"
+            android:paddingTop="18dp"
+            android:paddingEnd="18dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_tree"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:elevation="18dp"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.BoldFont"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/logoImg"
+            app:layout_constraintEnd_toEndOf="@+id/logoImg"
+            app:layout_constraintStart_toStartOf="@+id/logoImg"
+            app:layout_constraintTop_toTopOf="@+id/logoImg"
+            app:layout_constraintVertical_bias="0.26999998" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="18dp"
+            android:gravity="center"
+            android:text="@string/resort"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/logoImg"
+            app:layout_constraintStart_toStartOf="@+id/logoImg"
+            app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/loginBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewmodel::onLoginClicked}"
+            android:text="@string/login_to_continue"
+            android:textAppearance="@style/TextAppearance.BoldFont"
+            android:visibility="gone"
+            app:icon="@drawable/ic_google"
+            app:iconSize="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/logoImg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="198dp"
-                android:layout_height="198dp"
-                android:layout_gravity="center"
-                android:paddingTop="8dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img_logo" />
-
-        </com.google.android.material.card.MaterialCardView>
-
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

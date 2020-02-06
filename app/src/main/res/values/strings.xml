@@ -6,4 +6,56 @@
     <string name="customer_phone_no">Customer Phone no.</string>
     <string name="booking_amount">Booking Amount</string>
     <string name="to">TO</string>
+    <string name="other_info">Enter other info.</string>
+    <string name="total_days">Total Booking Days:</string>
+    <string name="time_check_error">End date cannot be less than start date!\nPlease choose correct date.</string>
+    <string name="days">days</string>
+    <string name="customer_name_error">Enter customer name</string>
+    <string name="event_added_msg">Successfully added the event!</string>
+    <string name="confirm_detail">Confirm details!</string>
+
+    <string name="sun">SUN</string>
+    <string name="mon">MON</string>
+    <string name="tue">TUE</string>
+    <string name="wed">WED</string>
+    <string name="thu">THU</string>
+    <string name="fri">FRI</string>
+    <string name="sat">SAT</string>
+
+    <string name="user_name">User Name</string>
+    <string name="phone_no">Phone No.</string>
+    <string name="other_info_title">Other Info</string>
+    <string name="booking_start_date">Booking Start Date</string>
+    <string name="booking_end_date">Booking End Date</string>
+
+    <string name="Rs">\u20B9</string>
+    <string name="booking_details">Booking Details</string>
+    <string name="total_booked_days">Total Booked Days</string>
+    <string name="delete_booking">Delete Booking!</string>
+    <string name="delete_booking_msg">Do you want to delete the booking details?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="successfully_deleted">Successfully deleted the Booking.</string>
+    <string name="deleting_wait_msg">Please wait… Deleting event</string>
+    <string name="update_booking">Update Booking</string>
+    <string name="updating_detail">Updating booking details…</string>
+    <string name="successfully_updated">Successfully updated the details.</string>
+    <string name="no_booking_found">No Booking Found!</string>
+    <string name="resort">Resort</string>
+    <string name="invalid_booking">Oops! Gyan vatika already booked for the dates.</string>
+    <string name="sign_in_msg">Please sign in to proceed!</string>
+    <string name="new_booking">New Booking</string>
+    <string name="booked">Booked</string>
+    <string name="est_booking_amount">Est. Amount</string>
+    <string name="total_booking_amount_for_the_month">Total Booking amount of month</string>
+    <string name="more">More</string>
+    <string name="show_booking_amount">Show booking amount</string>
+    <string name="log_out">Log out</string>
+    <string name="logout_desc">Do you want to log out?</string>
+    <string name="login_to_continue">Login to continue</string>
+    <string name="developed_by">Developed By:</string>
+    <string name="developer">Abdul Rehman</string>
+    <string name="dev_phone">+917073342591</string>
+    <string name="dev_mail">abdulrehman0796@gmail.com</string>
+
 </resources>

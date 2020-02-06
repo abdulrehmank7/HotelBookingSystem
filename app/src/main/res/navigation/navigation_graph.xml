@@ -2,27 +2,75 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@+id/splashFragment">
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.arkapp.gyanvatika.ui.splashscreen.SplashFragment"
-        android:label="SplashFragment">
+        android:name="com.arkapp.gyanvatika.ui.splashscreen.SplashFragment">
         <action
-            android:id="@+id/openHomeScreen"
-            app:destination="@id/calendarView"
+            android:id="@+id/action_splashFragment_to_calendarViewFragment"
+            app:destination="@id/calendarViewFragment"
             app:launchSingleTop="true"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
-        android:id="@+id/calendarView"
-        android:name="com.arkapp.gyanvatika.ui.home.calendarView.CalendarViewFragment"
-        android:label="Calendar"/>
+        android:id="@+id/calendarViewFragment"
+        android:name="com.arkapp.gyanvatika.ui.calendarView.CalendarViewFragment">
+        <action
+            android:id="@+id/action_calendarViewFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/newBooking"
-        android:name="com.arkapp.gyanvatika.ui.home.newBooking.NewBookingFragment"
-        android:label="New Booking" />
+        android:id="@+id/newBookingFragment"
+        android:name="com.arkapp.gyanvatika.ui.newBooking.NewBookingFragment">
+        <argument
+            android:name="startTimestamp"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_newBooking_to_calendarView"
+            app:destination="@id/calendarViewFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/calendarViewFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="eventToUpdate"
+            android:defaultValue="@null"
+            app:argType="com.arkapp.gyanvatika.data.firestore.responses.Event"
+            app:nullable="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="com.arkapp.gyanvatika.ui.eventDetails.EventDetailFragment">
+        <action
+            android:id="@+id/action_eventDetail_to_newBooking"
+            app:destination="@id/newBookingFragment" />
+        <argument
+            android:name="event"
+            android:defaultValue="@null"
+            app:argType="com.arkapp.gyanvatika.utils.pojo.GeneratedEvents"
+            app:nullable="true" />
+
+        <argument
+            android:name="openedDateTimestamp"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+
+        <action
+            android:id="@+id/action_eventDetailFragment_to_calendarViewFragment"
+            app:destination="@id/calendarViewFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/calendarViewFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.arkapp.gyanvatika.ui.more.MoreFragment"/>
+
 </navigation>
