@@ -1,12 +1,12 @@
 # Android Architecture and Techniques
 
-<img src="https://github.com/blessedCode07/HotelBookingSystem/blob/master/Screenshot_20200109-221159.png" width="20%" height="20%"> <img src="https://github.com/blessedCode07/HotelBookingSystem/blob/master/Screenshot_20200109-221551.png" width="20%" height="20%">
-<img src="https://github.com/blessedCode07/HotelBookingSystem/blob/master/Screenshot_20200109-221759.png" width="20%" height="20%">
-<img src="https://github.com/blessedCode07/HotelBookingSystem/blob/master/Screenshot_20200109-221810.png" width="20%" height="20%">
-<img src="https://github.com/blessedCode07/HotelBookingSystem/blob/master/Screenshot_20200109-221907.png" width="20%" height="20%">
-<img src="https://github.com/blessedCode07/HotelBookingSystem/blob/master/Screenshot_20200109-221915.png" width="20%" height="20%">
-<img src="https://github.com/blessedCode07/HotelBookingSystem/blob/master/Screenshot_20200109-221923.png" width="20%" height="20%">
-<img src="https://github.com/blessedCode07/HotelBookingSystem/blob/master/Screenshot_20200109-221946.png" width="20%" height="20%">
+<img src="https://github.com/abdulrehmank7/HotelBookingSystem/blob/master/Screenshot_20200109-221159.png" width="20%" height="20%"> <img src="https://github.com/abdulrehmank7/HotelBookingSystem/blob/master/Screenshot_20200109-221551.png" width="20%" height="20%">
+<img src="https://github.com/abdulrehmank7/HotelBookingSystem/blob/master/Screenshot_20200109-221759.png" width="20%" height="20%">
+<img src="https://github.com/abdulrehmank7/HotelBookingSystem/blob/master/Screenshot_20200109-221810.png" width="20%" height="20%">
+<img src="https://github.com/abdulrehmank7/HotelBookingSystem/blob/master/Screenshot_20200109-221907.png" width="20%" height="20%">
+<img src="https://github.com/abdulrehmank7/HotelBookingSystem/blob/master/Screenshot_20200109-221915.png" width="20%" height="20%">
+<img src="https://github.com/abdulrehmank7/HotelBookingSystem/blob/master/Screenshot_20200109-221923.png" width="20%" height="20%">
+<img src="https://github.com/abdulrehmank7/HotelBookingSystem/blob/master/Screenshot_20200109-221946.png" width="20%" height="20%">
 
 ### This project show cases some of the best practices in android. I have tried to make this project as close to Google guidelines as possible.
 
